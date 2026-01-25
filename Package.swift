@@ -28,16 +28,20 @@ let package = Package(
   ],
   dependencies: [
     .package(url: "https://github.com/apple/swift-collections", from: "1.0.0"),
-    .package(url: "https://github.com/groue/GRDB.swift", from: "7.6.0"),
+    // GRDB fork with Android support (removes CSQLite dependency that doesn't compile on Android)
+    .package(url: "https://github.com/svobodamarek/GRDB.swift", branch: "master"),
     .package(url: "https://github.com/pointfreeco/swift-concurrency-extras", from: "1.0.0"),
     .package(url: "https://github.com/pointfreeco/swift-custom-dump", from: "1.3.3"),
-    .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.9.0"),
+    // Dependencies fork with Android support (uses OpenCombine via combine-schedulers fork)
+    .package(url: "https://github.com/svobodamarek/swift-dependencies", branch: "main"),
     .package(url: "https://github.com/pointfreeco/swift-perception", from: "2.0.0"),
-    .package(url: "https://github.com/pointfreeco/swift-sharing", from: "2.3.0"),
+    // Sharing fork with Android support (uses forked dependencies)
+    .package(url: "https://github.com/svobodamarek/swift-sharing", branch: "main"),
     .package(url: "https://github.com/pointfreeco/swift-snapshot-testing", from: "1.18.4"),
+    // Structured queries fork with Android support (uses OpenCombine)
     .package(
-      url: "https://github.com/pointfreeco/swift-structured-queries",
-      from: "0.27.0",
+      url: "https://github.com/svobodamarek/swift-structured-queries",
+      branch: "main",
       traits: [
         .trait(name: "StructuredQueriesTagged", condition: .when(traits: ["SQLiteDataTagged"]))
       ]

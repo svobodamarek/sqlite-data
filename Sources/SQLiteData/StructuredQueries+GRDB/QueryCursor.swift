@@ -1,6 +1,11 @@
 import Foundation
 import GRDB
+// Import C SQLite functions - platform-specific
+#if os(Linux) || os(Android) || os(Windows)
+import SQLCipher
+#else
 import GRDBSQLite
+#endif
 import StructuredQueriesCore
 
 /// A cursor of a structured query.
