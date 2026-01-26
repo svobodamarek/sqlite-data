@@ -48,6 +48,10 @@ let package = Package(
     ),
     .package(url: "https://github.com/pointfreeco/swift-tagged", from: "0.10.0"),
     .package(url: "https://github.com/pointfreeco/xctest-dynamic-overlay", from: "1.5.0"),
+    // JNI support for Skip native Android builds.
+    .package(url: "https://source.skip.tools/swift-jni.git", from: "0.3.1"),
+    // Android native support modules (provides AndroidNDK).
+    .package(url: "https://source.skip.tools/swift-android-native.git", from: "1.4.3"),
   ],
   targets: [
     .target(
@@ -61,6 +65,8 @@ let package = Package(
         .product(name: "Perception", package: "swift-perception"),
         .product(name: "Sharing", package: "swift-sharing"),
         .product(name: "StructuredQueriesSQLite", package: "swift-structured-queries"),
+        .product(name: "SwiftJNI", package: "swift-jni"),
+        .product(name: "AndroidNative", package: "swift-android-native", condition: .when(platforms: [.android])),
         .product(
           name: "Tagged",
           package: "swift-tagged",
