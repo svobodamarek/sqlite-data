@@ -1,6 +1,10 @@
 import Foundation
 import GRDB
+#if os(Linux) || os(Android) || os(Windows)
+import SQLCipher
+#else
 import GRDBSQLite
+#endif
 import StructuredQueriesCore
 
 /// A cursor of a structured query.

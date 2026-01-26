@@ -1,5 +1,9 @@
 import Foundation
+#if os(Linux) || os(Android) || os(Windows)
+import SQLCipher
+#else
 import GRDBSQLite
+#endif
 import StructuredQueriesCore
 
 @usableFromInline
