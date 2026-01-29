@@ -6,6 +6,8 @@ import Sharing
 
 #if canImport(Combine)
   @preconcurrency import Combine
+#elseif canImport(OpenCombine)
+  import OpenCombine
 #endif
 
 extension SharedReaderKey {
@@ -125,6 +127,8 @@ struct FetchKey<Value: Sendable>: SharedReaderKey {
     }
 
     let scheduler: any ValueObservationScheduler = scheduler ?? ImmediateScheduler()
+    // Note: GRDB's ValueObservation.publisher() only works with native Combine, not OpenCombine.
+    // On Android (OpenCombine), we use the start() fallback which still properly yields values.
     #if canImport(Combine)
       let dropFirst =
         switch context {

@@ -53,6 +53,8 @@ let package = Package(
     .package(url: "https://source.skip.tools/swift-jni.git", from: "0.3.1"),
     // Android native support modules (provides AndroidNDK).
     .package(url: "https://source.skip.tools/swift-android-native.git", from: "1.4.3"),
+    // OpenCombine for Android (Combine replacement).
+    .package(url: "https://github.com/OpenCombine/OpenCombine.git", from: "0.14.0"),
   ],
   targets: [
     .target(
@@ -68,6 +70,7 @@ let package = Package(
         .product(name: "StructuredQueriesSQLite", package: "swift-structured-queries"),
         .product(name: "SwiftJNI", package: "swift-jni"),
         .product(name: "AndroidNative", package: "swift-android-native", condition: .when(platforms: [.android])),
+        .product(name: "OpenCombine", package: "OpenCombine", condition: .when(platforms: [.android])),
         .product(
           name: "Tagged",
           package: "swift-tagged",

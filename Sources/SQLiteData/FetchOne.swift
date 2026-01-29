@@ -2,6 +2,8 @@ import Sharing
 
 #if canImport(Combine)
   import Combine
+#elseif canImport(OpenCombine)
+  import OpenCombine
 #endif
 #if canImport(SwiftUI)
   import SwiftUI
@@ -62,7 +64,7 @@ public struct FetchOne<Value: Sendable>: Sendable {
     try await sharedReader.load()
   }
 
-  #if canImport(Combine)
+  #if canImport(Combine) || canImport(OpenCombine)
     /// A publisher that emits events when the database observes changes to the query.
     public var publisher: some Publisher<Value, Never> {
       sharedReader.publisher
