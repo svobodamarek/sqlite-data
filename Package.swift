@@ -35,10 +35,10 @@ let package = Package(
     .package(url: "https://github.com/pointfreeco/swift-custom-dump", from: "1.3.3"),
     // Dependencies fork with Android support (uses OpenCombine via combine-schedulers fork)
     .package(url: "https://github.com/svobodamarek/swift-dependencies", branch: "main"),
-    .package(url: "https://github.com/pointfreeco/swift-perception", from: "2.0.0"),
+    .package(url: "https://github.com/svobodamarek/swift-perception", from: "2.0.0"),
     // Sharing fork with Android support (uses forked dependencies)
     .package(url: "https://github.com/svobodamarek/swift-sharing", branch: "main"),
-    .package(url: "https://github.com/pointfreeco/swift-snapshot-testing", from: "1.18.4"),
+    .package(url: "https://github.com/svobodamarek/swift-snapshot-testing", from: "1.18.4"),
     // Structured queries fork with Android support (uses OpenCombine)
     .package(
       url: "https://github.com/svobodamarek/swift-structured-queries",

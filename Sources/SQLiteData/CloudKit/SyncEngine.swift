@@ -506,14 +506,15 @@
       #if canImport(DeveloperToolsSupport)
         @Dependency(\.context) var context
         @Dependency(\.continuousClock) var clock
+        let previewClock = clock
         if context == .preview {
           previewTimerTask.withValue {
             $0?.cancel()
-            $0 = Task { [weak self] in
+            $0 = Task { [weak self, previewClock] in
               await withErrorReporting {
                 while true {
                   guard let self else { break }
-                  try await clock.sleep(for: .seconds(1))
+                  try await previewClock.sleep(for: .seconds(1))
                   try await self.syncChanges()
                 }
               }
